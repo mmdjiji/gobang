@@ -119,7 +119,7 @@ export default {
           let pe = document.querySelector('.checkerboard').style.pointerEvents
           document.querySelector('.checkerboard').style.pointerEvents = 'none'
           
-          fetch(`http://127.0.0.1:8001/hello?x=${data.x}&y=${data.y}`).then(res => res.json()).then(res => {
+          fetch(`http://${window.location.host.split(':')[0]}:8001/hello?x=${data.x}&y=${data.y}`).then(res => res.json()).then(res => {
             console.log('AI决策', res.x, res.y)
             this.setDownPiece(this.piecesData.baseData[`${ res.x }-${ res.y }`]);
             this.avg_visits = res.avg_visits
@@ -237,7 +237,7 @@ export default {
           this.setDownPiece(this.piecesData.baseData['8-8'])
         }
       }
-      fetch(`http://127.0.0.1:8001/create`).then(res => res.json()).then(res => {
+      fetch(`http://${window.location.host.split(':')[0]}:8001/create`).then(res => res.json()).then(res => {
         console.log(res)
       })
     }
