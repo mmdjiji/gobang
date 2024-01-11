@@ -10,7 +10,7 @@ avg_visits = 0
 def run_onetime(chess_board, agent, i, j):
     global pre_visits
     global avg_visits
-    os.system('cls')
+    # os.system('cls')
     move = (i, j)
     chess_board.play_stone(move)
     chess_board.display_board()
