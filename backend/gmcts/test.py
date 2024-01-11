@@ -23,7 +23,7 @@ def run_onetime(chess_board, agent, i, j):
         print(f"Avg Visits: {avg_visits:.0f}")
         print("-" * 40 + "\n")
 
-    agent_loc, agent_win_rate = agent.search()
+    agent_loc, agent_win_rate, l = agent.search()
     chess_board.play_stone(agent_loc)
     chess_board.display_board()
 
@@ -35,7 +35,7 @@ def run_onetime(chess_board, agent, i, j):
     print(f"  Time Cost: {dt:.6f}s")
     print("-"*40+"\n")
 
-    return chess_board, agent_loc, agent_win_rate
+    return chess_board, agent_loc, agent_win_rate, l
 
 def run():
     chess_board = ChessBoard()
@@ -59,8 +59,8 @@ def run():
 
 def one_time_try(chess_board, agent, i, j):
     if not chess_board.is_ended():
-        chess_board, agent_loc, agent_win_rate = run_onetime(chess_board, agent, i, j)
-        return chess_board, agent_loc, agent_win_rate
+        chess_board, agent_loc, agent_win_rate, l = run_onetime(chess_board, agent, i, j)
+        return chess_board, agent_loc, agent_win_rate, l
     else:
         pass
 
@@ -72,7 +72,7 @@ sente = 1
 if sente == 0:
     chess_board.play_stone((5, 5))
     chess_board.display_board()
-agent = Agent(chess_board=copy.deepcopy(chess_board), max_searches=10000)
+agent = Agent(chess_board=copy.deepcopy(chess_board), max_searches=2000)
 
 # i = int(input('Abscissa: '))
 # j = int(input('Ordinate: '))
@@ -96,8 +96,8 @@ def execute(x, y):
     global agent
     global pre_visits
     global avg_visits
-    chess_board, agent_loc, agent_win_rate = one_time_try(chess_board, agent, x, y)
+    chess_board, agent_loc, agent_win_rate, l = one_time_try(chess_board, agent, x, y)
     aix, aiy = agent_loc
-    return aix, aiy, agent_win_rate, pre_visits, avg_visits
+    return aix, aiy, agent_win_rate, pre_visits, avg_visits, l
 
 # print(execute(5, 5))

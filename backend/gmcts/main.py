@@ -13,7 +13,7 @@ if sente == 0:
     chess_board.play_stone((8, 8))
     chess_board.display_board()
 
-agent = Agent(chess_board=copy.deepcopy(chess_board), max_searches=10000)
+agent = Agent(chess_board=copy.deepcopy(chess_board), max_searches=2000)
 
 while not chess_board.is_ended():
     i = int(input('Abscissa: '))
@@ -40,7 +40,7 @@ while not chess_board.is_ended():
         print(f"Avg Visits: {avg_visits:.0f}")
         print("-" * 40 + "\n")
 
-    agent_loc, agent_win_rate = agent.search()
+    agent_loc, agent_win_rate, l = agent.search()
     chess_board.play_stone(agent_loc)
     chess_board.display_board()
 

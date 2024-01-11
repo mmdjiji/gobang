@@ -115,9 +115,15 @@ class Agent:
             self.back_propagate(value)
 
         best_child = max(self.root.children, key=lambda child: get_win_rate(child))
+        l = [[0 for i in range(10)] for j in range(10)]
+        for ch in self.root.children:
+            x, y = ch.chess_board.moves[-1]
+            l[x][y] = get_win_rate(ch)
+        # for i in range(10):
+        #     print(l[i])
         agent_win_rate = get_win_rate(best_child)
         loc = best_child.chess_board.moves[-1]
 
         self.root = best_child
         self.root.parent = None
-        return loc, agent_win_rate
+        return loc, agent_win_rate, l

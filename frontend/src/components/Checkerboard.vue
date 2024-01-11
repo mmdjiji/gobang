@@ -1,6 +1,15 @@
 <template>
   <div class="checkerboard">
     <CheckerboardBase :baseData="piecesData.baseData" />
+    <div style="position: absolute; top: 250px; right: 100px;">
+      <table>
+        <tr v-for="(row, i) in l" :key="i">
+          <td v-for="(col, j) in row" :key="j" style="width: 20px; height: 20px; border: 1px solid #000; text-align: center; font-size: 12px; color: #000; background: #fff;">
+            {{ col != 0 ? col.toFixed(2):0 }}
+          </td>
+        </tr>
+      </table>
+    </div>
     <p>avg_visits: {{ avg_visits.toFixed(2) }}, pre_visits: {{ pre_visits.toFixed(2) }}, rate: {{ rate.toFixed(2) }}</p>
   </div>
 </template>
@@ -28,7 +37,8 @@ export default {
       isComputer: false,
       avg_visits: 0,
       pre_visits: 0,
-      rate: 0
+      rate: 0,
+      l: []
     }
   },
   computed: mapState({
@@ -125,6 +135,7 @@ export default {
             this.avg_visits = res.avg_visits
             this.pre_visits = res.pre_visits
             this.rate = res.rate
+            this.l = res.l
             // make CheckerboardBase style enable (class=checkerboard)
             document.querySelector('.checkerboard').style.pointerEvents = pe
           })

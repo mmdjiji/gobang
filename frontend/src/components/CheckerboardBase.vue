@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="checkerboard" style="  width: 400px; height: 400px;">
+    <div class="checkerboard" style="width: 400px; height: 400px;">
       <div class="line-row"></div>
       <div class="line-col"></div>
       <div class="spot"></div>
