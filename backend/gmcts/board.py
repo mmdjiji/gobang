@@ -1,6 +1,5 @@
 import warnings
 
-
 class ChessBoard:
     def __init__(self, size=10, win_len=5):
         self.size = size
