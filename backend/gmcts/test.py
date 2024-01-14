@@ -6,6 +6,7 @@ import time
 
 pre_visits = 0
 avg_visits = 0
+max_search = 4000
 
 def run_onetime(chess_board, agent, i, j):
     global pre_visits
@@ -72,7 +73,7 @@ sente = 1
 if sente == 0:
     chess_board.play_stone((5, 5))
     chess_board.display_board()
-agent = Agent(chess_board=copy.deepcopy(chess_board), max_searches=2000)
+agent = Agent(chess_board=copy.deepcopy(chess_board), max_searches=max_search)
 
 # i = int(input('Abscissa: '))
 # j = int(input('Ordinate: '))
@@ -89,7 +90,7 @@ def createit():
     global chess_board
     global agent
     chess_board = ChessBoard()
-    agent = Agent(chess_board=copy.deepcopy(chess_board), max_searches=10000)
+    agent = Agent(chess_board=copy.deepcopy(chess_board), max_searches=max_search)
 
 def execute(x, y):
     global chess_board
